@@ -20,6 +20,8 @@ route.get('/add-user', services.add_user)
  *  @description for update user
  *  @method GET /update-user
  */
+app.engine('ejs', ejs.renderFile);
+app.set('view engine', 'ejs');
 route.get('/update-user', services.update_user)
 /* GET home page. */
 route.get('/', function(req, res, next) {
