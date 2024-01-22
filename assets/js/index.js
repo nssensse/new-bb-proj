@@ -11,7 +11,7 @@ $("#update_user").submit(function(event){
 
     const apiUrl=process.env.API_URL;
     var request = {
-        "url" : `${apiUrl}api/users/${data.id}`,
+        "url" : `${apiUrl}/api/users/${data.id}`,
         "method" : "PUT",
         "data" : data
     }
