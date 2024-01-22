@@ -1,8 +1,4 @@
 
-
-
-
-
 $("#update_user").submit(function(event){
     event.preventDefault();
 
