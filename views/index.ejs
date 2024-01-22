@@ -1,0 +1,251 @@
+
+<!-- include header -->
+<% 
+let suum=12;
+let sum = (a) => a.reduce((x, y) => x + y);
+let totalAmount = sum(users.map((x) => Number(x.gender)));
+
+let profit = (a) => a.reduce((x, y) => x + y);
+let  totalprofit= profit(users.map((x) => Number(x.name)));
+ // 6
+ let progressMinimum = 0;
+ let progressMaximum = 100;
+
+
+
+const min = 0;
+const max = 570;
+
+// Clamp number between two values with the following line:
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+clamp(-50, min, max); // Will return: 0
+clamp(50, min, max);  // Will return: 50
+progrbaar=clamp(totalprofit/totalAmount*550, min, 570); // Will return: 100
+
+
+
+
+
+
+
+let winningval=users.map((x) => (x.email));
+
+
+let str_min= (users.map((x) => (x.email))).reduce((a, b) => a.length <= b.length ? a : b)
+
+
+
+
+
+const obj = {
+  a: 2,
+  b2: 2,
+  0: 1,
+  b: 0,
+  c: 0
+}
+
+const keyWithValue = Object.keys(obj).find((key) => obj[key] == 1);
+
+
+
+function findNearestObjectWithEmptyValue(users, key) {
+  let nearestObject = null;
+  let distance = Infinity;
+
+  for (let i = 0; i < users.length; i++) {
+    const object = users[i];
+    if (object.hasOwnProperty(key) && object[key] == 0) {
+      const currentDistance = Math.abs(i - users.indexOf(object));
+      if (currentDistance < distance) {
+        distance = currentDistance;
+        nearestObject = object;
+      }
+    }
+  }
+
+  return nearestObject;
+}
+const nearestObject = findNearestObjectWithEmptyValue(users, "name");
+
+
+
+
+
+
+
+function countNonNullProperties(objects) {
+  let count = 0;
+  
+  for (let i = 0; i < objects.length; i++) {
+    const obj = objects[i];
+    const keys = Object.keys(obj);
+    let isEmpty = false;
+    
+    for (let j = 0; j < keys.length; j++) {
+      const property = obj[keys[j]];
+      
+      if (property === null || property === undefined || property === '') {
+        isEmpty = true;
+        break;
+      }
+    }
+    
+    if (!isEmpty) {
+      count++;
+    }
+  }
+  
+  return count;
+}
+
+const objects = [
+  { name: 'John', age: 25 },
+  { name: 'Jane', age: null },
+  { name: '', age: 30 },
+  { name: 'Mark', age: 35 },
+  { name: 'Sarah', age: undefined }
+];
+
+const result1337 = countNonNullProperties(users);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function findMaxNameNumberEmail(objects) {
+  if (objects.length === 0) {
+      return null; // Возвращаем null, если массив объектов пуст
+  }
+
+  let maxObject = objects[0]; // Предполагаем, что первый объект имеет максимальное значение
+  let maxName = parseInt(maxObject.name) || 0; // Преобразуем значение свойства 'name' в число для сравнения
+  let maxEmail = maxObject.email; // Получаем значение свойства 'email' для вывода
+
+  for (let i = 1; i < objects.length; i++) {
+      const currentName = parseInt(objects[i].name) || 0;
+      if (currentName > maxName) {
+          maxName = currentName;
+          maxObject = objects[i];
+          maxEmail = maxObject.email;
+      }
+  }
+
+  console.log(`Email объекта с максимальным числом в свойстве 'name':`, maxEmail);
+  return maxEmail;
+}
+
+
+
+
+const maxNameNumberEmail = findMaxNameNumberEmail(users);
+
+
+
+
+%>
+    <%- include('include/_header') %>
+<!-- /include header -->
+
+
+    <!-- Main Site -->
+    <main id="site-main">
+        <div class="contcont">
+            <div class="main-header">
+
+                <div class="header-info">
+                    <div class="bbtittle">
+                        <div class="pic-logo"></div>
+                        <ul>BONUSBUY</ul>
+                    </div>
+                    <div class="nowslot">
+                    ⭐ <%- nearestObject.email %>
+                  </div>
+                  <div class="topslot">
+                    🏆 	<%- maxNameNumberEmail %>
+                  </div>
+                    <table id="table_fixed">
+
+                        <thead>
+                          <tr>
+                          <th>Balance</th>                             
+                            <th><%- totalAmount %>💰</th>                    
+                          </tr>
+                          <tr>
+                          <th>Bonuses</th>
+                          
+                            <th>  <%- result1337 %>/<%- users.length %>🎁</th>
+                            
+                          </tr>
+                          <tr>
+                          <th >Profit</th>
+                            <th><%- totalprofit-totalAmount %> 📈</th>
+                          </tr>
+                          <tr>
+                            <th >Status</th>
+                              <th>1.2X 📋</th>
+                          </tr>
+                        </thead>
+
+                      </table>
+
+                </div>
+               
+            </div>
+
+            
+ 
+                <meta http-equiv="refresh" content="11.5">
+
+                <!-- form handling -->
+
+                
+                    <table class="table tbdsfsd">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th width="10px"></th>
+                                <th width="350px">Slot name</th>
+                                <th width="30px">Bonus cost</th>
+                                <th width="40px">Bonus win</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <%- include('include/_widget') %>
+                        </tbody>
+                    </table>
+                    <div class="container-bar">
+                       
+                  
+                        <div class="progress2 progress-moved">
+                          <div style="width:<%- progrbaar %>px" class="progress-bar2"></div>
+
+                        </div>
+                      </div>
+                
+
+            
+        </div>
+        
+    </main>
+<!-- /Main Site -->
+
+
+<!-- include footer -->
+<%- include('include/_footer') %>

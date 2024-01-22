@@ -1,0 +1,26 @@
+<%
+let scrollingstl="";
+if(users.length>10)
+scrollingstl="mover-1";
+else
+scrollingstl="mover-11";
+%>
+<% for(var i = 0; i < users.length; i++) { %>
+
+
+
+        <tr class="tech-slideshow" width="340px">
+
+            <td style="padding-left: 15px;" class=<%-scrollingstl%> ><%= i + 1 %>.</td>
+            <td style="text-align: left;"class=<%-scrollingstl%> ><%= users[i].email %></td>
+            <td class=<%-scrollingstl%> ><%= users[i].gender %>₽</td>
+            <td class=<%-scrollingstl%>><%= users[i].name %>₽</td>
+
+    
+    
+    
+    </tr>
+    
+<% } 
+let value=1232;
+%>

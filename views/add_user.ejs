@@ -1,0 +1,44 @@
+
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container table2">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+
+        </div>
+
+        <!-- add user form -->
+        <%- include('include/_form') %>
+
+        <form  action="/" method="POST">
+            <table style="width: 100%;">
+                <thead class="thead-dark1">
+                    <tr class="table2">
+                        <th width="width:10px">ID</th>
+                        <th width="100px">Slot name</th>
+                        <th width="width:50px">Bonus coast</th>
+                        <th width="width:50px">Bonus win</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%- include('include/_show') %>
+                </tbody>
+            </table>
+        </form>
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
