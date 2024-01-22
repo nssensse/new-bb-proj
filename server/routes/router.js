@@ -22,7 +22,7 @@ route.get('/add-user', services.add_user)
  */
 route.get('/update-user', services.update_user)
 /* GET home page. */
-router.get('/', function(req, res, next) {
+route.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
 });
 

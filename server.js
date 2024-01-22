@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8080
 
 // log requests
 app.use(morgan('tiny'));
-require("./bin/www");
+
 // mongodb connection
 connectDB();
 
