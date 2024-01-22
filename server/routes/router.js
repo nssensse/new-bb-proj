@@ -21,7 +21,10 @@ route.get('/add-user', services.add_user)
  *  @method GET /update-user
  */
 route.get('/update-user', services.update_user)
-
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+});
 
 // API
 route.post('/api/users', controller.create);
