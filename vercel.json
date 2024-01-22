@@ -1,7 +1,7 @@
 {
     "version": 2,
     "builds": [{
-       "src": "db.js",
+       "src": "./serer.js",
        "use": "@vercel/node"
     }],
     "routes": [{
