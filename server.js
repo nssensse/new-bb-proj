@@ -9,7 +9,6 @@ const connectDB = require('./server/database/connection');
 const app = express();
 
 dotenv.config( { path : 'config.env'} );
-const PORT = process.env.PORT || 8080;
 
 // Log requests
 app.use(morgan('tiny'));
@@ -24,14 +23,13 @@ app.use(bodyparser.urlencoded({ extended : true }));
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "views"));
 
-// Load assets
-app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
-app.use('/img', express.static(path.resolve(__dirname, "assets/img")));
-app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
+// Serve static files from "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Load routers
 app.use('/', require('./server/routes/router'));
 
-app.listen(PORT, () => { 
-  console.log(`Server is running on http://localhost:${PORT}`);
+// Listen on the provided port or default to 8080
+app.listen(process.env.PORT || 8080, () => { 
+  console.log('Server is running.');
 });
