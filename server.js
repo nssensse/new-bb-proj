@@ -8,28 +8,29 @@ const connectDB = require('./server/database/connection');
 
 const app = express();
 
-dotenv.config( { path : 'config.env'} );
+dotenv.config( { path : 'config.env'} )
+const PORT = process.env.PORT || 8080
 
-// Log requests
+// log requests
 app.use(morgan('tiny'));
 
-// MongoDB connection
+// mongodb connection
 connectDB();
 
-// Parse request to body-parser
-app.use(bodyparser.urlencoded({ extended : true }));
+// parse request to body-parser
+app.use(bodyparser.urlencoded({ extended : true}))
 
-// Set view engine and path to views
-app.set("view engine", "ejs");
-app.set("views", path.resolve(__dirname, "views"));
+// set view engine
+app.set("view engine", "ejs")
+//app.set("views", path.resolve(__dirname, "videws/ejs"))
 
-// Serve static files from "public" folder
-app.use(express.static(path.join(__dirname, 'public')));
+// load assets
+app.use('/css', express.static(path.resolve(__dirname, "assets/css")))
+app.use('/img', express.static(path.resolve(__dirname, "assets/img")))
+app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
-// Load routers
-app.use('/', require('./server/routes/router'));
+// load routers
+app.use('/', require('./server/routes/router'))
 
-// Listen on the provided port or default to 8080
-app.listen(process.env.PORT || 8080, () => { 
-  console.log('Server is running.');
-});
+
+app.listen(PORT, ()=> { console.log(`Server is running on http://localhost:${PORT}`)});
